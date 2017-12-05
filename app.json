@@ -1,0 +1,7 @@
+{
+  "name": "Banistmo Challenge",
+  "description": "Banistmo Challenge FrontEnd App",
+  "repository": "https://github.com/sansagara/banistmo",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "static", "banistmo"]
+}

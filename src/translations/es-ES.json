@@ -1,0 +1,18 @@
+{
+  "APP_NAME": "Banistmo Reto",
+  "About": "Sobre",
+  "Hello world !": "Hola mundo !",
+  "Home": "Principal",
+  "Logged in as": "Registrado como",
+  "Login": "Entrar",
+  "Logout": "Salir",
+  "Password": "Password",
+  "Password is required": "Password es requerido",
+  "Username": "Username",
+  "Username is required": "Username es requerido",
+  "Username or password incorrect.": "Username or password incorrecto.",
+  "Remember me": "Recuerdame",
+  "Version": "Version",
+  "Transaction List": "Lista de Transacciones",
+  "Charts": "Graficas"
+}

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1>
+      <span translate>Transaction List</span>
+    </h1>
+    <app-loader [isLoading]="isLoading"></app-loader>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>UID</th>
+        <th>TXN</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let txn of transactions">
+        <th scope="row">{{txn.pk}}</th>
+        <td>{{txn.date}}</td>
+        <td>{{txn.uuid}}</td>
+        <td>{{txn.txn}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Pagination">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="prevPage()">Previous</a></li>
+        <li class="page-item"><a class="page-link" (click)="toPage(page-1)">{{ page -1}}</a></li>
+        <li class="page-item"><a class="page-link">{{ page }}</a></li>
+        <li class="page-item"><a class="page-link" (click)="toPage(page+1)">{{ page +1}}</a></li>
+        <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</div>

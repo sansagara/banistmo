@@ -6,7 +6,8 @@ import {AuthenticationService} from "../core/authentication/authentication.servi
 
 const routes = {
   transactionList: '/transactions/service1/',
-  rollingAvg: '/transactions/service2/grouped/'
+  year: '/transactions/service2/year/',
+  month: '/transactions/service2/month/'
 };
 
 @Injectable()
@@ -33,7 +34,7 @@ export class TransactionService {
     headers.set('Authorization', 'Token ' + this.authenticationService.credentials.token);
     headers.append('Content-Type', 'application/json');
 
-    return this.http.get(routes.rollingAvg, {headers})
+    return this.http.get(routes.year, {headers})
       .pipe(
         map((res: Response) => {
           return res.json();

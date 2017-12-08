@@ -14,5 +14,11 @@
   "Remember me": "Remember me",
   "Version": "Version",
   "Transaction List": "Transaction List",
-  "Charts": "Charts"
+  "Charts": "Charts",
+  "Transactions Rolling Average for": "Transactions Rolling Average for",
+  "LINE_CHART_EXPLAIN_HEADER": "About this chart",
+  "LINE_CHART_EXPLAIN_CONTENT": "This is a line chart showing the monthly average for transactions on the provided dataset.",
+  "LINE_CHART_EXPLAIN_CONTENT2": "Averages at exactly zero (0) usually mean there's no data available for that particular month.",
+  "LOGIN_HELP_HEADER": "Reviewer's Credentials",
+  "LOGIN_HELP_CONTENT": "Use"
 }

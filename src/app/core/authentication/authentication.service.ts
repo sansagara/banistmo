@@ -44,28 +44,25 @@ export class AuthenticationService {
    * @return {Observable<Credentials>} The user credentials.
    */
   login(context: LoginContext): Observable<Credentials> {
-    // Replace by proper authentication call
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log('LoginContext', context);
     return this.http.post(routes.login,
       JSON.stringify(context),
-      {headers})
-        .pipe(
-          map((res: Response) => {
-            let token = res.json() && res.json().auth_token;
-            if (token) {
-              console.log('res', token);
-              const data = {
-                username: context.username,
-                token: token
-              };
-              console.log('data', data);
-              this.setCredentials(data, context.remember);
-              return data;
-            }
-          })
-        );
+      {headers}).pipe(map((res: Response) => {
+        let token = res.json() && res.json().auth_token;
+        if (token) {
+          console.log('res', token);
+          const data = {
+            username: context.username,
+            token: token
+          };
+          console.log('login data', data);
+          this.setCredentials(data, context.remember);
+          return data;
+        }
+      })
+    );
   }
 
   /**
@@ -73,9 +70,17 @@ export class AuthenticationService {
    * @return {Observable<boolean>} True if the user was logged out successfully.
    */
   logout(): Observable<boolean> {
-    // Customize credentials invalidation here
-    this.setCredentials();
-    return of(true);
+    const headers = new Headers();
+    headers.append('Authorization', 'Token ' + this._credentials.token);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(routes.logout,
+      {},
+      {headers}).pipe(map((res: Response) => {
+        console.log('logout data', res.json());
+        this.setCredentials();
+        return true;
+      })
+    );
   }
 
   /**

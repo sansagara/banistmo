@@ -12,5 +12,14 @@
   "Username is required": "Identifiant requis",
   "Username or password incorrect.": "Identifiant ou mot de passe incorrect.",
   "Remember me": "Rester connecté",
-  "Version": "Version"
+  "Version": "Version",
+  "Transaction List": "Liste de transactions",
+  "Charts": "Graphiques",
+  "Transactions Rolling Average for": "Transactions Moyenne mobile pour",
+  "LINE_CHART_EXPLAIN_HEADER": "À propos de ce tableau",
+  "LINE_CHART_EXPLAIN_CONTENT": "Il s'agit d'un graphique linéaire montrant la moyenne mensuelle des transactions sur l'ensemble de données fourni.",
+  "LINE_CHART_EXPLAIN_CONTENT2": "Les moyennes à exactement zéro (0) signifient généralement qu'il n'y a pas de données disponibles pour ce mois particulier.",
+  "LOGIN_HELP_HEADER": "identification du réviseur",
+  "LOGIN_HELP_CONTENT": "Utilisez"
+
 }

@@ -1,16 +1,36 @@
 <div class="container-fluid">
   <div class="jumbotron text-center">
     <h1>
-      <span translate>Charts</span>
+      <span translate>Transactions Rolling Average for</span> 2016
     </h1>
-
-    <canvas baseChart
+    <br>
+    <canvas #chartBase baseChart
             [datasets]="lineChartData"
             [labels]="lineChartLabels"
             [options]="lineChartOptions"
             [chartType]="lineChartType"
             (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            (chartClick)="chartClicked($event, chartDetail)"></canvas>
+    <br>
 
+    <div *ngIf="showDetailChart">
+      <h2>
+        <span translate>Transaction Details for</span> {{detailMonth}}
+      </h2>
+      <br>
+      <canvas #chartDetail baseChart
+              [datasets]="lineChartDetailData"
+              [labels]="lineChartDetailLabels"
+              [colors]="lineChartDetailColors"
+              [options]="lineChartDetailOptions"
+              [chartType]="lineChartDetailType"></canvas>
+    </div>
+
+  </div>
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading" translate>LINE_CHART_EXPLAIN_HEADER</h4>
+    <p translate>LINE_CHART_EXPLAIN_CONTENT</p>
+    <hr>
+    <p class="mb-0" translate="">LINE_CHART_EXPLAIN_CONTENT2</p>
   </div>
 </div>

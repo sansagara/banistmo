@@ -18,8 +18,11 @@
   "Transactions Rolling Average for": "Transactions Moyenne mobile pour",
   "LINE_CHART_EXPLAIN_HEADER": "À propos de ce tableau",
   "LINE_CHART_EXPLAIN_CONTENT": "Il s'agit d'un graphique linéaire montrant la moyenne mensuelle des transactions sur l'ensemble de données fourni.",
-  "LINE_CHART_EXPLAIN_CONTENT2": "Les moyennes à exactement zéro (0) signifient généralement qu'il n'y a pas de données disponibles pour ce mois particulier.",
+  "LINE_CHART_EXPLAIN_CONTENT2": "Cliquez sur un point pour voir les détails de ce mois.",
+  "LINE_CHART_EXPLAIN_CONTENT3": "Les moyennes à exactement zéro (0) signifient généralement qu'il n'y a pas de données disponibles pour ce mois particulier.",
   "LOGIN_HELP_HEADER": "identification du réviseur",
-  "LOGIN_HELP_CONTENT": "Utilisez"
-
+  "LOGIN_HELP_CONTENT": "Utilisez",
+  "Transaction Details for": "Détails de la transaction pour",
+  "Transactions for user": "Transactions de l'utilisateur",
+  "Go to Admin": "Administrer"
 }

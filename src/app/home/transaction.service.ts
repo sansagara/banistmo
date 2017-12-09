@@ -6,6 +6,7 @@ import {AuthenticationService} from "../core/authentication/authentication.servi
 
 const routes = {
   transactionList: '/transactions/service1/',
+  transactionUser: '/transactions/service1/user/',
   year: '/transactions/service2/year/',
   month: '/transactions/service2/month/'
 };
@@ -29,12 +30,38 @@ export class TransactionService {
       );
   }
 
-  getRollingAverage(): Observable<any> {
+  getTransactionUser(user: number): Observable<any> {
+    const headers = new Headers();
+    headers.set('Authorization', 'Token ' + this.authenticationService.credentials.token);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get(routes.transactionUser + user, {headers})
+      .pipe(
+        map((res: Response) => {
+          return res.json();
+        }),
+      );
+  }
+
+  getRollingAverageYear(): Observable<any> {
     const headers = new Headers();
     headers.set('Authorization', 'Token ' + this.authenticationService.credentials.token);
     headers.append('Content-Type', 'application/json');
 
     return this.http.get(routes.year, {headers})
+      .pipe(
+        map((res: Response) => {
+          return res.json();
+        }),
+      );
+  }
+
+  getRollingAverageMonth(month: number): Observable<any> {
+    const headers = new Headers();
+    headers.set('Authorization', 'Token ' + this.authenticationService.credentials.token);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get(routes.month  + month, {headers})
       .pipe(
         map((res: Response) => {
           return res.json();

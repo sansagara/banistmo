@@ -5,7 +5,7 @@
     </h1>
     <app-loader [isLoading]="isLoading"></app-loader>
 
-    <table class="table">
+    <table class="table table-sm">
       <thead>
       <tr>
         <th>#</th>
@@ -18,7 +18,7 @@
       <tr *ngFor="let txn of transactions">
         <th scope="row">{{txn.pk}}</th>
         <td>{{txn.date}}</td>
-        <td>{{txn.uuid}}</td>
+        <td><button type="button" class="btn btn-link" (click)="openModal(content, txn.uuid)">{{txn.uuid}}</button></td>
         <td>{{txn.txn}}</td>
       </tr>
       </tbody>
@@ -35,3 +35,35 @@
 
   </div>
 </div>
+
+<!--Modal Window-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"><span translate>Transactions for user</span> {{detail_uuid}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <app-loader [isLoading]="isLoadingDetail"></app-loader>
+    <table [hidden]="isLoadingDetail"  class="table table-sm borderless">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">TXN</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let txn of detail_transactions">
+        <th scope="row">{{txn.pk}}</th>
+        <td>{{txn.date}}</td>
+        <td>{{txn.txn}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+  </div>
+</ng-template>

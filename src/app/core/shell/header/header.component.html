@@ -41,6 +41,7 @@
             <h6 class="dropdown-header">
               <span translate>Logged in as</span> <b>{{username}}</b></h6>
             <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="redirectAdmin()" translate>Go to Admin</button>
             <button class="dropdown-item" (click)="logout()" translate>Logout</button>
           </div>
         </div>

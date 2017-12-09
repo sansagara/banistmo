@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   version: '1.0 (dev)',
   serverUrl: 'https://banistmo-back.herokuapp.com',
+  serverUrlAdmin: 'https://banistmo-back.herokuapp.com/admin',
   defaultLanguage: 'en-US',
   supportedLanguages: [
     'en-US',

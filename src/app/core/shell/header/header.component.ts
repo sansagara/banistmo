@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { I18nService } from '../../i18n.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit {
   get username(): string | null {
     const credentials = this.authenticationService.credentials;
     return credentials ? credentials.username : null;
+  }
+
+  redirectAdmin() {
+    window.location.href=environment.serverUrlAdmin;
   }
 
 }

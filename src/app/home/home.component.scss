@@ -1,6 +1,8 @@
-
 q {
   font-style: italic;
   font-size: 1.2rem;
   quotes: "« " " »";
+}
+.borderless td, .borderless th {
+  border: none;
 }

@@ -18,7 +18,11 @@
   "Transactions Rolling Average for": "Promedio Movil de transacciones para",
   "LINE_CHART_EXPLAIN_HEADER": "Sobre esta grafica",
   "LINE_CHART_EXPLAIN_CONTENT": "Este es un gráfico de líneas que muestra el promedio mensual de transacciones en el conjunto de datos proporcionado.",
-  "LINE_CHART_EXPLAIN_CONTENT2": "Los promedios a exactamente cero (0) generalmente significan que no hay datos disponibles para ese mes en particular.",
+  "LINE_CHART_EXPLAIN_CONTENT2": "Puede hacer click en un punto para ver el detalle de ese mes en particular.",
+  "LINE_CHART_EXPLAIN_CONTENT3": "Los promedios a exactamente cero (0) generalmente significan que no hay datos disponibles para ese mes en particular.",
   "LOGIN_HELP_HEADER": "Credenciales para evaluador",
-  "LOGIN_HELP_CONTENT": "Usar"
+  "LOGIN_HELP_CONTENT": "Usar,",
+  "Transaction Details for": "Detalle de transacciones para",
+  "Transactions for user": "Transactions del usuario",
+  "Go to Admin": "Administrar"
 }

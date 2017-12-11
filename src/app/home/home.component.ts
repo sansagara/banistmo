@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-
-
 import {TransactionService} from './transaction.service';
+import {AuthenticationService} from "../core/authentication/authentication.service";
 
 @Component({
   selector: 'app-home',
@@ -23,9 +22,11 @@ export class HomeComponent implements OnInit {
   detail_transactions: Array<any>;
 
   constructor(private transactionService: TransactionService,
+              private authenticationService: AuthenticationService,
               private modalService: NgbModal) { }
 
   ngOnInit() {
+    console.log("%cGreetings evaluator!. Hope you like what you see ;)", "color: blue;");
     this.isLoading = true;
     this.getTransactionList();
   }
@@ -34,7 +35,8 @@ export class HomeComponent implements OnInit {
   getTransactionList() {
     this.transactionService.getTransactionList(this.page)
       .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe(result => {
+      .subscribe(
+        result => {
         this.transactions = result.results;
         this.count = result.count;
         this.next = result.count;

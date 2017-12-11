@@ -74,6 +74,7 @@ proxy.conf.js                backend proxy configuration
 - [ng-bootsrap](https://ng-bootstrap.github.io/)
 - [ngx-translate](https://github.com/ngx-translate/core)
 - [Lodash](https://lodash.com)
+- [NG2 Charts](https://github.com/valor-software/ng2-charts)
 
 #### Coding guides
 

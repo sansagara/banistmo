@@ -6,6 +6,7 @@ import {TransactionService} from "../home/transaction.service";
 export interface AvgResult {
   month: number;
   avg_txn: number;
+  sum_txn: number;
 }
 
 @Component({
@@ -17,7 +18,9 @@ export class ChartsComponent implements OnInit {
 
   @ViewChild('chartDetail') chartDetail: ViewChild;
   avg_transactions: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  // 12 zeros. One for each month.
+  sum_transactions: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  // 12 zeros. One for each month.
   avg_transactions_month: Array<number>;  // Should be filled with zeroes for each day of specific month.
+  sum_transactions_month: Array<number>;  // Should be filled with zeroes for each day of specific month.
   isLoading: boolean;
   version: string = environment.version;
   showDetailChart: boolean = false;
@@ -33,10 +36,12 @@ export class ChartsComponent implements OnInit {
     this.transactionService.getRollingAverageYear()
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe(results => {
-        for (let avg of results) {
-          this.avg_transactions[avg.month - 1] = avg.avg_txn;
+        for (let res of results) {
+          this.avg_transactions[res.month - 1] = res.avg_txn;
+          this.sum_transactions[res.month - 1] = res.sum_txn;
         }
-        this.lineChartData = [{data: this.avg_transactions, label: 'Rolling Avg'}];
+        this.lineChartData = [{data: this.sum_transactions, label: 'Total'},
+                              {data: this.avg_transactions, label: 'Rolling Avg'}];
       });
   }
 
@@ -44,15 +49,18 @@ export class ChartsComponent implements OnInit {
     this.transactionService.getRollingAverageMonth(month)
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe(results => {
-        for (let avg of results) {
-          this.avg_transactions_month[avg.day - 1] = avg.avg_txn;
+        for (let res of results) {
+          this.sum_transactions_month[res.day - 1] = res.sum_txn;
+          this.avg_transactions_month[res.day - 1] = res.avg_txn;
         }
-        this.lineChartDetailData = [{data: this.avg_transactions_month, label: 'Rolling Avg'}];
+        this.lineChartDetailData = [{data: this.sum_transactions_month, label: 'Total'},
+                                    {data: this.avg_transactions_month, label: 'Rolling Avg'}];
       });
   }
 
   // Initial Chart Variables and Listeners.
   public lineChartData:Array<any> = [
+    {data: this.sum_transactions, label: 'Total'},
     {data: this.avg_transactions, label: 'Rolling Avg'}
   ];
 
@@ -69,8 +77,8 @@ export class ChartsComponent implements OnInit {
       if (this.lineChartLabels[e.active[0]._index] != this.detailMonth) {
         this.detailMonth = this.lineChartLabels[e.active[0]._index];
         let days_month = this.daysInMonth(e.active[0]._index + 1, 2016);
-        this.avg_transactions_month = this.generateZeroesArray(days_month);
-        this.lineChartDetailLabels = this.generateIncreasingArray(days_month);
+        this.sum_transactions_month = this.avg_transactions_month = this.generateZeroesArray(days_month);
+        this.lineChartDetailLabels =  this.generateIncreasingArray(days_month);
         this.getRollingAverageMonth(e.active[0]._index + 1);
         this.showDetailChart = true;
       } else {
@@ -85,7 +93,8 @@ export class ChartsComponent implements OnInit {
 
   // Detail Chart Variables and Listeners.
   public lineChartDetailData:Array<any> = [
-    {data: this.avg_transactions, label: 'Rolling Avg'}
+    {data: this.sum_transactions_month, label: 'Total'},
+    {data: this.avg_transactions_month, label: 'Rolling Avg'}
   ];
 
   public lineChartDetailLabels:Array<any>;

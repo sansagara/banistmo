@@ -76,7 +76,6 @@ export class AuthenticationService {
     return this.http.post(routes.logout,
       {},
       {headers}).pipe(map((res: Response) => {
-        console.log('logout data', res.json());
         this.setCredentials();
         return true;
       })

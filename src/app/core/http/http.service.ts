@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
 import { Logger } from '../logger.service';
 import { HttpCacheService } from './http-cache.service';
 import { HttpCachePolicy } from './request-options-args';
+import {AuthenticationService} from "../authentication/authentication.service";
 
 const log = new Logger('HttpService');
 
@@ -24,7 +25,8 @@ export class HttpService extends Http {
 
   constructor(backend: ConnectionBackend,
               private defaultOptions: RequestOptions,
-              private httpCacheService: HttpCacheService) {
+              private httpCacheService: HttpCacheService,
+              private authenticationService: AuthenticationService) {
     // Customize default options here if needed
     super(backend, defaultOptions);
   }
@@ -126,11 +128,18 @@ export class HttpService extends Http {
 
   // Customize the default error handler here if needed
   private errorHandler(response: Response): Observable<Response> {
+
+    if (response.status == 403) {
+      log.warn("Service returned an authentication error. Maybe the Token expired");
+      //this.authenticationService.logout();
+    }
+
     if (environment.production) {
-      // Avoid unchaught exceptions on production
+      // Avoid uncaught exceptions on production
       log.error('Request error', response);
       return _throw(response);
     }
+
     throw response;
   }
 

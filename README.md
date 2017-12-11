@@ -1,8 +1,8 @@
 # Banistmo: A challenge
 
-An Angular App. Meant as a display of some frontend programming skills.
-
-The whole set of resources are available on [banistmo.herokuapp.com](http://banistmo.herokuapp.com/)
+An Angular App. Meant as a display of some frontend programming skills. This depends on the companion Restful Backend App, which is [here](https://github.com/sansagara/banistmo-backend)
+This is already deployed to Heroku for convenience. It can be found on [banistmo.herokuapp.com](http://banistmo.herokuapp.com/login)
+An index of the whole set of resources is available on the backend [banistmo-back.herokuapp.com](http://banistmo-back.herokuapp.com/index.html)
 
 ## Running Locally
 
@@ -27,12 +27,16 @@ $ git push heroku master
 
 $ heroku open
 ```
-or
+or instead, click on this button to deploy automatically:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sansagara/banistmo/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://github.com/sansagara/banistmo)
 
+## Login
+You can login with any account created on the Backend. It will generate a Token for the session.
+To create a new account for login, go to the [Backend Admin Page](http://banistmo-back.herokuapp.com/admin/)
+The superadmin username and password for the Live deployment is `Banistmo:Banistmo123`
 
-# Project structure
+## Project structure
 
 ```
 dist/                        compiled version
@@ -85,3 +89,12 @@ proxy.conf.js                backend proxy configuration
 - [Updating dependencies and tools](docs/updating.md)
 - [Using a backend proxy for development](docs/backend-proxy.md)
 - [Browser routing](docs/routing.md)
+
+
+## About
+#### Author
+[Leonel Atencio](http://blog.leonelatencio.com)
+#### Version
+1.0
+#### License
+Do What The F*ck You Want To Public License (wtfpl)
